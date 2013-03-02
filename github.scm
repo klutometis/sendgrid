@@ -9,6 +9,7 @@
    ;; (debug query)
    (let ((user (query-any query 'user))
          (page (query-any query 'page)))
+     (debug user page)
      (handle-exceptions exn
        (begin
          (display-status-&c. status-bad-request)
@@ -20,6 +21,5 @@
         (lambda ()
           (display-content-type-&c. 'json)
           (let ((response (read-json)))
-            (debug 'harro)
-            ;; (debug response)lr\
+            (debug response)
             (write-json response))))))))
