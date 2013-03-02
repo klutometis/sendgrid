@@ -1,3 +1,4 @@
 #+TITLE: Homework for SendGrid
 
-I modified the [[http://collabedit.com/f96tf][collabedit link]] so that it actually works.
+1. I modified the [[http://collabedit.com/f96tf][collabedit link]] so that array-diff actually works.
+2. See the [[http://wikitex.org/sendgrid/][Github problem]] in action.
