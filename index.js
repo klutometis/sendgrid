@@ -1,20 +1,19 @@
 $(function() {
   $("img").hide();
+
   $("#user").typeWatch({
     callback: function(user) {
       $("ul").empty();
       $("img").show();
       $("#status").text("");
       fetch = function(page) {
-        // $.getJSON("github.scm?user=" + user + "&page=" + page)
-        $.getJSON("https://api.github.com/users/" + user + "/repos?page=" + page)
+        $.getJSON("github.scm?user=" + user + "&page=" + page)
           .done(function (data) {
             $.each(data, function(i, repo) {
-              $("ul").append($("<li>").append(repo.name));
+              $("ul").append($("<li>")
+                             .append($("<a>", {href: repo.html_url})
+                                     .append(repo.name)));
             });
-            console.log($("ul"))
-            // $("ul").trigger("refresh");
-            // $("ul").show();
             if (data.length > 0) {
               fetch(page + 1);
             }})
