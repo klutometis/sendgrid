@@ -8,14 +8,19 @@ $(function() {
         $.getJSON("https://api.github.com/users/" + user +
                   "/repos?page=" + page,
                   function (data) {
-                    $("img").hide();
                     $.each(data, function(i, repo) {
                       $("ul").append($("<li>").append(repo.name));
                     });
                     if (data.length > 0) {
                       fetch(page + 1);
                     }
-                  });
+                  })
+        .fail(function() {
+          $("#status").text("Github request failed.");
+        })
+        .always(function() {
+          $("img").hide();
+        });
       };
       fetch(1);
     }});
