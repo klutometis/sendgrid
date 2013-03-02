@@ -1,13 +1,11 @@
 $(function() {
-  $("img").hide();
-
   $("#user").typeWatch({
     callback: function(user) {
       $("ul").empty();
-      $("img").show();
+      $("img").css("visibility", "visible");
       $("#status").text("");
       fetch = function(page) {
-        $.getJSON("github.scm?user=" + user + "&page=" + page)
+        $.getJSON("scm/github.scm?user=" + user + "&page=" + page)
           .done(function (data) {
             $.each(data, function(i, repo) {
               $("ul").append($("<li>")
@@ -16,13 +14,16 @@ $(function() {
             });
             if (data.length > 0) {
               fetch(page + 1);
+            } else {
+              $("img").css("visibility", "hidden");
             }})
           .fail(function(data, status, error) {
+            console.log(data)
+            console.log(status)
+            console.log(error)
             $("#status").text("Github request failed.");
+            $("img").css("visibility", "hidden");
           })
-          .always(function() {
-            $("img").hide();
-          });
       };
       fetch(1);
     }});
