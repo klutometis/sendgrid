@@ -6,21 +6,19 @@ $(function() {
       $("img").show();
       $("#status").text("");
       fetch = function(page) {
-        $.getJSON("github.scm?user=" + user + "&page=" + page)
+        // $.getJSON("github.scm?user=" + user + "&page=" + page)
+        $.getJSON("https://api.github.com/users/" + user + "/repos?page=" + page)
           .done(function (data) {
-            console.log(data);
-            $("#status").text("This is for reals.")
             $.each(data, function(i, repo) {
-              console.log(repo.name)
               $("ul").append($("<li>").append(repo.name));
             });
+            console.log($("ul"))
+            // $("ul").trigger("refresh");
+            // $("ul").show();
             if (data.length > 0) {
               fetch(page + 1);
             }})
           .fail(function(data, status, error) {
-            console.log(data)
-            console.log(status)
-            console.log(error)
             $("#status").text("Github request failed.");
           })
           .always(function() {
