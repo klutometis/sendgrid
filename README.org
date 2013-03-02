@@ -1,3 +1,3 @@
-Homework for SendGrid application
+#+TITLE: Homework for SendGrid application
 
 I modified the [[http://collabedit.com/f96tf][collabedit link]] so that it actually works.
