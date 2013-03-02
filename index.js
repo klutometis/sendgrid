@@ -4,6 +4,7 @@ $(function() {
     callback: function(user) {
       $("ul").empty();
       $("img").show();
+      $("#status").text("");
       fetch = function(page) {
         $.getJSON("https://api.github.com/users/" + user +
                   "/repos?page=" + page,
