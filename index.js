@@ -33,7 +33,6 @@ $(function() {
 
   $("input[type=submit]").click(function(event) {
     $("#status").text("");
-    event.preventDefault();
 
     var to = $("#email").val();
     var user = $("#user").val();
