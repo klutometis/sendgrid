@@ -14,7 +14,10 @@
          (api-key (or (query-any query 'api_key)
                       "z_ZxnpX?qYKUW5")))
      (handle-exceptions exn
-       (display-status-&c. status-bad-request)
+       (begin
+         (display-status-&c. status-bad-request)
+         (debug ((condition-property-accessor 'exn 'message) exn)
+                ((condition-property-accessor 'exn 'arguments) exn)))
        (with-input-from-request
         "https://sendgrid.com/api/mail.send.json"
         `((to . ,to)
