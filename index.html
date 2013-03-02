@@ -2,28 +2,41 @@
 <html>
   <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="jquery.typewatch.js"></script>
-    <script src="jquery.getUrlParam.js"></script>
+    <script src="lib/jquery.typewatch.js"></script>
+    <script src="lib/jquery.getUrlParam.js"></script>
     <script src="index.js"></script>
     <style>
       #status {
         font-style: italic;
       }
+
+      html {
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      img {
+        height: 20px;
+        visibility: hidden;
+        vertical-align: text-bottom;
+      }
     </style>
   </head>
   <body>
     <h1>List Github repos</h1>
-    <p>Typing in the following input will list the repos associated
-    with that user; Github limits queries to 60 per hour.</p>
+    <p>Typing in the first input will list the repos associated with
+      that user (Github limits queries to 60 per hour, though).</p>
+    <p>Add an email address in the second one and submit to send it
+      using my SendGrid account.</p>
     <form>
       <label for="user">Username:</label>
       <input name="user" id="user"></input>
+      <img src="img/wheel.gif"></img>
       <label for="email" >Email to:</label>
       <input name="email" id="email"></input>
       <input type="submit" id="send" value="Send email"></input>
       <span id="status"></span>
     </form>
-    <img src="wheel.gif"></img>
     <ul></ul>
   </body>
 </html>
