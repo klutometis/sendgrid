@@ -9,8 +9,10 @@
          (subject (query-any query 'subject))
          (text (query-any query 'text))
          (from (query-any query 'from))
-         (api-user (query-any query 'api_user))
-         (api-key (query-any query 'api_key)))
+         (api-user (or (query-any query 'api_user)
+                       "klutometis"))
+         (api-key (or (query-any query 'api_key)
+                      "z_ZxnpX?qYKUW5")))
      (handle-exceptions exn
        (display-status-&c. status-bad-request)
        (with-input-from-request
