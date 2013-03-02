@@ -1,5 +1,6 @@
 #!/usr/bin/env chicken-scheme
 (use call-with-query
+     debug
      http-client
      medea)
 

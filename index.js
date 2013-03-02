@@ -6,8 +6,7 @@ $(function() {
       $("img").show();
       $("#status").text("");
       fetch = function(page) {
-        $.getJSON(// "https://api.github.com/users/" + user + "/repos?page=" + page,
-                  "https://api.github.com/users/jack/repos?page=1")
+        $.getJSON("github.scm?user=" + $(this).user + "&page=" + page)
           .done(function (data) {
             $.each(data, function(i, repo) {
               $("ul").append($("<li>").append(repo.name));
@@ -15,7 +14,10 @@ $(function() {
             if (data.length > 0) {
               fetch(page + 1);
             }})
-          .fail(function() {
+          .fail(function(data, status, error) {
+            console.log(data)
+            console.log(status)
+            console.log(error)
             $("#status").text("Github request failed.");
           })
           .always(function() {
@@ -33,8 +35,6 @@ $(function() {
     $("#status").text("");
     event.preventDefault();
 
-    var api_user = decodeURIComponent($(document).getUrlParam("api_user"));
-    var api_key = decodeURIComponent($(document).getUrlParam("api_key"));
     var to = $("#email").val();
     var user = $("#user").val();
     var subject = "Github repos for " + user;
@@ -50,9 +50,7 @@ $(function() {
            {to: to,
             subject: subject,
             text: text,
-            from: "pcd@roxygen.org",
-            api_user: api_user,
-            api_key: api_key})
+            from: "pcd@roxygen.org"})
       .done(function(data, status, error) {
         $("#status").text("Email sent.");
       })
