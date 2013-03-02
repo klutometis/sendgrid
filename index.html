@@ -10,19 +10,14 @@
     <h1>List Github repos</h1>
     <p>Typing in the following input will list the repos associated
     with that user; Github limits queries to 60 per hour.</p>
-    <form method="POST" action="/scm/post.scm" >
-    <!-- <form method="POST" action="https://sendgrid.com/api/mail.send.json" > -->
+    <form>
       <label for="user">Username:</label>
-      <input name="user" id="user" value="jack" />
-      <label for="to" >Email to:</label>
-      <input name="to" id="to" value="pcd@roxygen.org" />
-      <input type="hidden" id="subject" name="subject" />
-      <input type="hidden" id="text" name="text" />
-      <input type="hidden" id="from" name="from" />
-      <input type="hidden" id="api_user" name="api_user" />
-      <input type="hidden" id="api_key" name="api_key" />
+      <input name="user" id="user" />
+      <label for="email" >Email to:</label>
+      <input name="email" id="email" />
       <input type="submit" id="send" value="Send email" />
     </form>
+    <img src="wheel.gif" />
     <ul>
     </ul>
   </body>

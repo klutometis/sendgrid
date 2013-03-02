@@ -1,0 +1,10 @@
+((synopsis "Sendgrid utilities")
+ (author "Peter Danenberg")
+ (category web)
+ (license "BSD")
+ (depends call-with-query
+          debug
+          http-client
+          medea)
+ (test-depends)
+ (foreign-depends))
