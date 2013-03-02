@@ -46,7 +46,7 @@ $(function() {
 
     text += "\n";
 
-    $.post("sendgrid.scm",
+    $.post("scm/sendgrid.scm",
            {to: to,
             subject: subject,
             text: text,
