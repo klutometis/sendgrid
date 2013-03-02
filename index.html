@@ -5,6 +5,11 @@
     <script src="jquery.typewatch.js"></script>
     <script src="jquery.getUrlParam.js"></script>
     <script src="index.js"></script>
+    <style>
+      #status {
+        font-style: italic;
+      }
+    </style>
   </head>
   <body>
     <h1>List Github repos</h1>
@@ -16,9 +21,9 @@
       <label for="email" >Email to:</label>
       <input name="email" id="email" />
       <input type="submit" id="send" value="Send email" />
+      <span id="status" />
     </form>
     <img src="wheel.gif" />
-    <span id="status" />
     <ul>
     </ul>
   </body>

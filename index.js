@@ -6,22 +6,21 @@ $(function() {
       $("img").show();
       $("#status").text("");
       fetch = function(page) {
-        $.getJSON("https://api.github.com/users/" + user +
-                  "/repos?page=" + page,
-                  function (data) {
-                    $.each(data, function(i, repo) {
-                      $("ul").append($("<li>").append(repo.name));
-                    });
-                    if (data.length > 0) {
-                      fetch(page + 1);
-                    }
-                  })
-        .fail(function() {
-          $("#status").text("Github request failed.");
-        })
-        .always(function() {
-          $("img").hide();
-        });
+        $.getJSON(// "https://api.github.com/users/" + user + "/repos?page=" + page,
+                  "https://api.github.com/users/jack/repos?page=1")
+          .done(function (data) {
+            $.each(data, function(i, repo) {
+              $("ul").append($("<li>").append(repo.name));
+            });
+            if (data.length > 0) {
+              fetch(page + 1);
+            }})
+          .fail(function() {
+            $("#status").text("Github request failed.");
+          })
+          .always(function() {
+            $("img").hide();
+          });
       };
       fetch(1);
     }});
@@ -31,6 +30,7 @@ $(function() {
   })
 
   $("input[type=submit]").click(function(event) {
+    $("#status").text("");
     event.preventDefault();
 
     var api_user = decodeURIComponent($(document).getUrlParam("api_user"));
@@ -54,10 +54,10 @@ $(function() {
             api_user: api_user,
             api_key: api_key})
       .done(function(data, status, error) {
-        alert("Email sent.");
+        $("#status").text("Email sent.");
       })
       .fail(function(data, status, error) {
-        alert("Email not sent.");
+        $("#status").text("Email not sent.");
       });
   });
 });
